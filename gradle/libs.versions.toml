@@ -15,7 +15,7 @@ androidx-datastore = "1.1.7"
 androidx-compose-bom = "2025.06.00"
 androidx-compose-material3 = "1.4.0-alpha15"
 compose-stable-marker = "1.0.6"
-
+compose-effects = "0.1.1"
 coil-compose = "2.7.0"
 
 ## Kotlin Symbol Processing
@@ -87,6 +87,7 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidx-compose-material3" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended"}
 compose-stable-marker = { group = "com.github.skydoves", name = "compose-stable-marker", version.ref = "compose-stable-marker" }
+compose-effects = { group = "com.github.skydoves", name = "compose-effects", version.ref = "compose-effects" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }

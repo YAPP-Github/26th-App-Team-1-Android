@@ -3,6 +3,7 @@ package com.ninecraft.booket.feature.library
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +32,8 @@ import kotlinx.parcelize.Parcelize
 data object LibraryScreen : Screen {
     data class State(
         val isLoading: Boolean = false,
+        val nickname: String = "",
+        val email: String = "",
         val sideEffect: SideEffect? = null,
         val eventSink: (Event) -> Unit,
     ) : CircuitUiState
@@ -51,6 +54,11 @@ internal fun Library(
     state: LibraryScreen.State,
     modifier: Modifier = Modifier,
 ) {
+    HandleLibrarySideEffects(
+        state = state,
+        eventSink = state.eventSink,
+    )
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -68,21 +76,23 @@ internal fun LibraryContent(
     state: LibraryScreen.State,
     modifier: Modifier = Modifier,
 ) {
-    HandleLibrarySideEffects(
-        state = state,
-        eventSink = state.eventSink,
-    )
-
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
         Box(modifier = modifier.fillMaxSize()) {
-            Text(
-                text = "내 서재",
-                modifier = Modifier.align(Alignment.Center),
-            )
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Text(text = "내 서재")
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = state.nickname)
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = state.email)
+            }
             BooketButton(
                 onClick = {
                     state.eventSink(LibraryScreen.Event.OnLogoutButtonClick)
@@ -118,6 +128,8 @@ private fun LibraryPreview() {
     BooketTheme {
         Library(
             state = LibraryScreen.State(
+                nickname = "홍길동",
+                email = "test@test.com",
                 eventSink = {},
             ),
         )

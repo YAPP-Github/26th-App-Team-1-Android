@@ -24,6 +24,8 @@ internal class AndroidFeatureConventionPlugin : Plugin<Project> {
                 implementation(project(path = ":core:model"))
                 implementation(project(path = ":core:ui"))
 
+                implementation(libs.compose.effects)
+
                 implementation(libs.bundles.circuit)
 
                 api(libs.circuit.codegen.annotation)
